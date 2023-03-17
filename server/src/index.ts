@@ -1,14 +1,15 @@
 import express from "express";
-import dotenv from "dotenv";
-import sequelize from "./db";
+import cors from "cors";
+import initDb from "./models/models";
 
-dotenv.config({ path: "../.env" });
 const app = express();
+app.use(cors());
+app.use(express.json());
+
 const port = process.env.PORT;
 const start = async () => {
   try {
-    await sequelize.authenticate();
-    await sequelize.sync();
+    await initDb();
     app.listen(port, () => console.log(`Running on port ${port}`));
   } catch (e) {
     console.log(e);
@@ -16,7 +17,7 @@ const start = async () => {
 };
 
 app.get("/", (request, response) => {
-  response.send("Hello world!");
+  response.status(200).json({ message: "WORKIING!!!" });
 });
 
 start();
