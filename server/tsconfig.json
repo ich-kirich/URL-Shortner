@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
     "sourceMap": true,
     "esModuleInterop": true,
     "outDir": "dist",
@@ -7,5 +9,6 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

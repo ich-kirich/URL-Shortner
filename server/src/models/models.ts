@@ -24,6 +24,11 @@ const initDb = async () => {
 
   Statistic.init(
     {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
       data: {
         type: DataTypes.STRING,
         allowNull: false,
