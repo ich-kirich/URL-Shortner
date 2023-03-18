@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db";
-import Link from "./Link";
+import Link from "./link";
 import Statistic from "./statistic";
 
 const initDb = async () => {
@@ -11,14 +11,14 @@ const initDb = async () => {
         autoIncrement: true,
         primaryKey: true,
       },
-      url: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: "link",
+      tableName: "links",
     },
   );
 
@@ -56,8 +56,8 @@ const initDb = async () => {
     },
   );
 
-  Link.hasMany(Statistic);
   Statistic.belongsTo(Link);
+  Link.hasMany(Statistic, { as: "info" });
 
   await sequelize.authenticate();
   await sequelize.sync();

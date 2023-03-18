@@ -1,16 +1,18 @@
+import { Request, Response, NextFunction } from "express";
 import ApiError from "../error/apiError";
 import Statistic from "../models/statistic";
 
 class StatisticControllers {
-  async createStatistic(req, res, next) {
+  async createStatistic(req: Request, res: Response, next: NextFunction) {
     try {
-      const { data, ip, region, browser, oc } = req.body;
+      const { data, ip, region, browser, oc, linkId } = req.body;
       const statistic = await Statistic.create({
         data,
         ip,
         region,
         browser,
         oc,
+        linkId,
       });
       return res.json(statistic);
     } catch (e) {
@@ -18,7 +20,7 @@ class StatisticControllers {
     }
   }
 
-  async getStatistic(req, res, next) {
+  async getStatistic(req: Request, res: Response, next: NextFunction) {
     const { id } = req.query;
     if (!id) {
       next(ApiError.badRequest("Id is not set"));
