@@ -11,7 +11,11 @@ const initDb = async () => {
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
+      originalUrl: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      shortUrl: {
         type: DataTypes.STRING,
         allowNull: false,
       },

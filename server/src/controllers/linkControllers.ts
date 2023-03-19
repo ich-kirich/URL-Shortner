@@ -6,8 +6,14 @@ import ApiError from "../error/apiError";
 class LinkControllers {
   async createLink(req: Request, res: Response, next: NextFunction) {
     try {
-      const { name, info } = req.body;
-      const link = await Link.create({ name });
+      const { originalUrl, info } = req.body;
+      const checkLink = await Link.findOne({ where: { originalUrl } });
+      if (checkLink) {
+        return res.json(checkLink);
+      }
+      const link = await Link.create({ originalUrl, shortUrl: "" });
+      link.shortUrl = `http://localhost:${process.env.PORT}/${link.id}`;
+      await link.save();
       if (info) {
         const newStatistic = JSON.parse(info);
         newStatistic.map((item: Statistic) =>
@@ -34,6 +40,16 @@ class LinkControllers {
       include: [{ model: Statistic, as: "info" }],
     });
     return res.json(link);
+  }
+
+  async getLink(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+    const link = await Link.findByPk(id);
+    if (link) {
+      res.redirect(link.originalUrl);
+    } else {
+      res.sendStatus(404);
+    }
   }
 }
 

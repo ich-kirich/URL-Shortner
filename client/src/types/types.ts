@@ -10,7 +10,8 @@ export interface IStatictic {
 
 export interface ILink {
   id: number;
-  name: string;
+  originalUrl: string;
+  shortUrl: string;
   info: IStatictic[];
   createdAt: string;
   updatedAt: string;
@@ -35,4 +36,8 @@ export interface IChildernProps {
 export interface IShortnerBtn {
   url: string;
   isError: boolean;
+}
+
+export interface INewLink {
+  originalUrl: string;
 }

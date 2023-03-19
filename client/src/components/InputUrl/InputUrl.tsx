@@ -6,7 +6,7 @@ import styles from "./InputUrl.module.scss";
 
 function InputUrl() {
   const [value, setValue] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
   return (
     <>
       <Box className={styles.inputShortner__wrapper}>

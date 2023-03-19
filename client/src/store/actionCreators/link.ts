@@ -1,13 +1,13 @@
 import { Dispatch } from "redux";
-import { getOneLink } from "../../API/PostService";
+import { addLink } from "../../API/PostService";
 import { ERROR_LOADING, LINK } from "../../libs/constants";
-import { ILinkAction } from "../../types/types";
+import { ILinkAction, INewLink } from "../../types/types";
 
-const fetchLink = () => {
+const fetchLink = (link: INewLink) => {
   return async (dispatch: Dispatch<ILinkAction>) => {
     try {
       dispatch({ type: LINK.FETCH_LINK });
-      const response = await getOneLink("1");
+      const response = await addLink(link);
       dispatch({
         type: LINK.FETCH_LINK_SUCCESS,
         payload: response.data,
