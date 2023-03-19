@@ -1,10 +1,18 @@
+import { Container, StyledEngineProvider } from "@mui/material";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./components/AppRouter/AppRouter";
 import Header from "./components/Header/Header";
 
 function App() {
   return (
-    <div className="App">
+    <StyledEngineProvider injectFirst>
       <Header />
-    </div>
+      <Container maxWidth="sm">
+        <BrowserRouter>
+          <AppRouter />
+        </BrowserRouter>
+      </Container>
+    </StyledEngineProvider>
   );
 }
 

@@ -1,18 +1,13 @@
 .topBar {
   position: static;
+  background-color: #ff6116;
 }
 
-.topBar__logo {
-  flex-grow: 1;
-}
-
-.navigation__wrapper {
-  display: flex;
-  gap: 15px;
-}
-
-.popup__wrapper {
-  display: flex;
-  justify-content: space-evenly;
-  background-color: #1976d2;
+.topBar__link {
+  color: inherit;
+  text-decoration: none;
+  transition: 1s;
+  &:hover {
+    color: #000;
+  }
 }

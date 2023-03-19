@@ -1,24 +1,19 @@
-/* eslint-disable no-nested-ternary */
-import { useEffect } from "react";
-import useActions from "../../hooks/useActions";
-import useTypedSelector from "../../hooks/useTypedSelector";
+import { AppBar, Container, Link, Toolbar, Typography } from "@mui/material";
+import styles from "./Header.module.scss";
 
 function Header() {
-  const { link, error, loading } = useTypedSelector((state) => state.link);
-  const fetchStatistic = useActions();
-  useEffect(() => {
-    fetchStatistic();
-  }, []);
   return (
-    <div>
-      {loading ? (
-        <h1>Loading...</h1>
-      ) : error ? (
-        <h1>Error...</h1>
-      ) : (
-        <div>{link.id}</div>
-      )}
-    </div>
+    <AppBar className={styles.topBar}>
+      <Container maxWidth="lg">
+        <Toolbar>
+          <Typography variant="h6" component="h1">
+            <Link href="/" className={styles.topBar__link}>
+              URL Shortner
+            </Link>
+          </Typography>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
 

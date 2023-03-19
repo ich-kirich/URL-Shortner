@@ -26,3 +26,8 @@ export interface ILinkAction {
   type: string;
   payload?: any;
 }
+
+export interface IChildernProps {
+  children: React.ReactNode;
+  className?: string;
+}
