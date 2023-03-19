@@ -2,8 +2,8 @@ import { Box } from "@mui/material";
 import { useEffect } from "react";
 import useActions from "../../hooks/useActions";
 import useTypedSelector from "../../hooks/useTypedSelector";
-import ErrorPage from "../ErrorPage/ErrorPage";
 import Loader from "../Loader/Loader";
+import ShortnerBlock from "../ShortnerBlock/ShortnerBlock";
 import ViewError from "../ViewError/ViewError";
 
 function MainPage() {
@@ -17,9 +17,7 @@ function MainPage() {
       {loading ? (
         <Loader />
       ) : (
-        <Box>
-          {error ? <ViewError>{error}</ViewError> : <div>{link.id}</div>}
-        </Box>
+        <Box>{error ? <ViewError>{error}</ViewError> : <ShortnerBlock />}</Box>
       )}
     </div>
   );

@@ -31,3 +31,8 @@ export interface IChildernProps {
   children: React.ReactNode;
   className?: string;
 }
+
+export interface IShortnerBtn {
+  url: string;
+  isError: boolean;
+}
