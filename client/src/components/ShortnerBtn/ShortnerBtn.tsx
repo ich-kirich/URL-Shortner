@@ -1,5 +1,6 @@
-import { Box, Button, Collapse } from "@mui/material";
+import { Box, Button, Collapse, Paper, Typography } from "@mui/material";
 import { useState } from "react";
+import AddLinkIcon from "@mui/icons-material/AddLink";
 import useActions from "../../hooks/useActions";
 import useTypedSelector from "../../hooks/useTypedSelector";
 import { IShortnerBtn } from "../../types/types";
@@ -13,6 +14,14 @@ function ShortnerBtn(props: IShortnerBtn) {
   const [visible, setVisible] = useState(false);
   const fetchLink = useActions();
 
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(link.shortUrl);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 1000);
+  };
+
   const cutUrl = () => {
     fetchLink({ originalUrl: url });
     setVisible(true);
@@ -25,6 +34,7 @@ function ShortnerBtn(props: IShortnerBtn) {
         variant="contained"
         color="primary"
         onClick={cutUrl}
+        className={styles.btn__cut}
       >
         Click me!
       </Button>
@@ -33,7 +43,24 @@ function ShortnerBtn(props: IShortnerBtn) {
           <Loader />
         ) : (
           <Box>
-            {error ? <ViewError>{error}</ViewError> : <div>{link.id}</div>}
+            {error ? (
+              <ViewError>{error}</ViewError>
+            ) : (
+              <Paper className={styles.link_wrapper}>
+                <Box className={styles.link__textIcon}>
+                  <AddLinkIcon />
+                  <Typography variant="body1">{link.shortUrl}</Typography>
+                </Box>
+                <Button
+                  onClick={handleCopyClick}
+                  disabled={isCopied}
+                  variant="contained"
+                  color="primary"
+                >
+                  {isCopied ? "Copied!" : "Copy"}
+                </Button>
+              </Paper>
+            )}
           </Box>
         )}
       </Collapse>
