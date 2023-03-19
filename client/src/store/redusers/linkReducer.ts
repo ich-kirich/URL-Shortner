@@ -1,9 +1,4 @@
-import {
-  FETCH_STATISTIC,
-  FETCH_STATISTIC_ERROR,
-  FETCH_STATISTIC_SUCCESS,
-  INITIAL_LINK,
-} from "../../libs/constants";
+import { INITIAL_LINK, LINK } from "../../libs/constants";
 import { ILinkAction, ILinkState } from "../../types/types";
 
 const initialState: ILinkState = {
@@ -17,11 +12,11 @@ const linkReducer = (
   action: ILinkAction,
 ): ILinkState => {
   switch (action.type) {
-    case FETCH_STATISTIC:
+    case LINK.FETCH_LINK:
       return { loading: true, error: null, link: INITIAL_LINK };
-    case FETCH_STATISTIC_SUCCESS:
+    case LINK.FETCH_LINK_SUCCESS:
       return { loading: false, error: null, link: action.payload };
-    case FETCH_STATISTIC_ERROR:
+    case LINK.FETCH_LINK_ERROR:
       return { loading: false, error: action.payload, link: INITIAL_LINK };
     default:
       return state;

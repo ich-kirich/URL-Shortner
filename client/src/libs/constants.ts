@@ -1,6 +1,3 @@
-export const FETCH_STATISTIC = "FETCH_STATISTIC";
-export const FETCH_STATISTIC_SUCCESS = "FETCH_STATISTIC_SUCCESS";
-export const FETCH_STATISTIC_ERROR = "FETCH_STATISTIC_ERROR";
 export const ERROR_LOADING = "Error loading statistics";
 export const BASE_URL = "http://localhost:3000/api/";
 export const INITIAL_LINK = {
@@ -10,3 +7,9 @@ export const INITIAL_LINK = {
   createdAt: "1",
   updatedAt: "1",
 };
+
+export enum LINK {
+  FETCH_LINK = "FETCH_LINK",
+  FETCH_LINK_SUCCESS = "FETCH_LINK_SUCCESS",
+  FETCH_LINK_ERROR = "FETCH_LINK_ERROR",
+}

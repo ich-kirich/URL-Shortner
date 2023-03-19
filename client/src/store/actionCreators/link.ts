@@ -1,24 +1,19 @@
 import { Dispatch } from "redux";
 import { getOneLink } from "../../API/PostService";
-import {
-  ERROR_LOADING,
-  FETCH_STATISTIC,
-  FETCH_STATISTIC_ERROR,
-  FETCH_STATISTIC_SUCCESS,
-} from "../../libs/constants";
+import { ERROR_LOADING, LINK } from "../../libs/constants";
 import { ILinkAction } from "../../types/types";
 
 const fetchLink = () => {
   return async (dispatch: Dispatch<ILinkAction>) => {
     try {
-      dispatch({ type: FETCH_STATISTIC });
+      dispatch({ type: LINK.FETCH_LINK });
       const response = await getOneLink("1");
       dispatch({
-        type: FETCH_STATISTIC_SUCCESS,
+        type: LINK.FETCH_LINK_SUCCESS,
         payload: response.data,
       });
     } catch (e) {
-      dispatch({ type: FETCH_STATISTIC_ERROR, payload: ERROR_LOADING });
+      dispatch({ type: LINK.FETCH_LINK_ERROR, payload: ERROR_LOADING });
     }
   };
 };
