@@ -12,15 +12,17 @@ export interface ILink {
   id: number;
   name: string;
   info: IStatictic[];
+  createdAt: string;
+  updatedAt: string;
 }
 
-export interface IStaticticState {
-  statistic: IStatictic[];
+export interface ILinkState {
+  link: ILink;
   loading: boolean;
   error: null | string;
 }
 
-export interface IStaticticAction {
+export interface ILinkAction {
   type: string;
   payload?: any;
 }

@@ -1,8 +1,7 @@
 import { combineReducers } from "redux";
-import statisticReducer from "./statisticReducer";
+import linkReducer from "./linkReducer";
 
 export const rootReducer = combineReducers({
-  statistic: statisticReducer,
+  link: linkReducer,
 });
-
 export type RootState = ReturnType<typeof rootReducer>;

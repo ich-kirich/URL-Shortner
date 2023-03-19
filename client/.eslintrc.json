@@ -34,6 +34,7 @@
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/default-param-last": 0,
     "import/no-named-as-default": 0,
     "no-param-reassign": 0,
     "react-hooks/exhaustive-deps": 0

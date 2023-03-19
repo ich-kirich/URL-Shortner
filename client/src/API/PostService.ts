@@ -1,8 +1,8 @@
 import axios from "axios";
 import { BASE_URL } from "../libs/constants";
 
-export async function getOneLink(currency: string) {
-  const response = await axios.get(`${BASE_URL}/link/1`);
+export async function getOneLink(id: string) {
+  const response = await axios.get(`${BASE_URL}/link/${id}`);
   return response;
 }
 
