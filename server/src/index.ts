@@ -3,6 +3,9 @@ import cors from "cors";
 import initDb from "./models/models";
 import router from "./routes/router";
 import ErrorHandling from "./middleware/ErrorHandlingMiddleWare";
+import { PORT } from "./libs/constants";
+import { tryCatchWrapper } from "./libs/server";
+import ApiError from "./error/apiError";
 
 const app = express();
 app.use(cors());
@@ -10,18 +13,16 @@ app.use(express.json());
 app.use("", router);
 app.use(ErrorHandling);
 
-const port = process.env.PORT;
-const start = async () => {
-  try {
-    await initDb();
-    app.listen(port, () => console.log(`Running on port ${port}`));
-  } catch (e) {
-    console.log(e);
-  }
+const startServer = () => {
+  tryCatchWrapper(
+    async () => {
+      await initDb();
+      app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+    },
+    (e: Error) => {
+      console.error(ApiError.internal(e.message));
+    },
+  );
 };
 
-app.get("/", (request, response) => {
-  response.status(200).json({ message: response });
-});
-
-start();
+startServer();
