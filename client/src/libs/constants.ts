@@ -1,12 +1,13 @@
 export const ERROR_LOADING = "Error loading statistics";
 export const BASE_URL = "http://localhost:5000/";
+export const ERROR_PAGE = "ERROR: nonexistent page";
 export const INITIAL_LINK = {
   id: 0,
   originalUrl: "init",
   shortUrl: "short",
   info: [],
-  createdAt: "1",
-  updatedAt: "1",
+  createdAt: "now",
+  updatedAt: "now",
 };
 
 export enum LINK {

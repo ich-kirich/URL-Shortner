@@ -1,8 +1,8 @@
+import { ERROR_PAGE } from "../../libs/constants";
 import ViewError from "../ViewError/ViewError";
 
 function ErrorPage() {
-  const errorMessage = "ERROR: nonexistent page";
-  return <ViewError>{errorMessage}</ViewError>;
+  return <ViewError>{ERROR_PAGE}</ViewError>;
 }
 
 export default ErrorPage;

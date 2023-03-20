@@ -20,6 +20,9 @@ function InputUrl() {
           fullWidth
           error={error}
           helperText={error ? "Enter url..." : ""}
+          FormHelperTextProps={{
+            classes: { root: styles.shortner__helperText },
+          }}
           onChange={(e) => setValue(e.target.value)}
           onKeyUp={() => setError(!isValidUrl(value))}
           className={styles.shortner__input}

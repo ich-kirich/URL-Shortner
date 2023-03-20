@@ -41,3 +41,7 @@ export interface IShortnerBtn {
 export interface INewLink {
   originalUrl: string;
 }
+
+export interface IShortUrlProps {
+  link: ILink;
+}
