@@ -5,7 +5,7 @@ import browser from "browser-detect";
 import Link from "../models/link";
 import Statistic from "../models/statistic";
 import ApiError from "../error/apiError";
-import { createUrl, tryCatchWrapper } from "../libs/server";
+import { createDate, createUrl, tryCatchWrapper } from "../libs/server";
 import { ERROR_NOT_FOUND } from "../libs/constants";
 
 class LinkControllers {
@@ -52,11 +52,20 @@ class LinkControllers {
           const geo = geoip.lookup(ipAddress);
           // const region = geo.country; // region user
           const userInf = browser(req.headers["user-agent"]);
-          const browserName = userInf.name; // name browser
-          const browserVersion = userInf.version; // version browser
+          const userBrowserName = userInf.name; // name browser
+          const userBrowserVersion = userInf.version; // version browser
           const userOs = userInf.os; // os user
-          const date = new Date(Date.now()); // request date
-          res.redirect(req.ip);
+          const date = createDate(new Date(Date.now())); // request date
+          Statistic.create({
+            data: date,
+            ip: ipAddress,
+            region: "Belarus",
+            browserName: userBrowserName,
+            browserVersion: userBrowserVersion,
+            oc: userOs,
+            LinkId: id,
+          });
+          res.redirect(link.originalUrl);
         } else {
           res.sendStatus(404);
         }

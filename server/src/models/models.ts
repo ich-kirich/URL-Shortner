@@ -45,7 +45,11 @@ const initDb = async () => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      browser: {
+      browserName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      browserVersion: {
         type: DataTypes.STRING,
         allowNull: false,
       },

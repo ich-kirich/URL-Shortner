@@ -31,11 +31,18 @@ export async function createUrl(
         data: item.data,
         ip: item.ip,
         region: item.region,
-        browser: item.browser,
+        browserName: item.browserName,
+        browserVersion: item.browserVersion,
         oc: item.oc,
-        linkId: link.id,
+        LinkId: link.id,
       }),
     );
   }
   return link;
+}
+
+export function createDate(date: Date) {
+  return `${date.getSeconds()} ${date.getMinutes()} ${date.getHours()} ${date.getUTCDate()} ${
+    date.getUTCMonth() + 1
+  } ${date.getUTCFullYear()}`;
 }

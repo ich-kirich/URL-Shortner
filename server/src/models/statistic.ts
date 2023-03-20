@@ -7,7 +7,9 @@ class Statistic extends Model {
 
   public region!: string;
 
-  public browser!: string;
+  public browserName!: string;
+
+  public browserVersion!: string;
 
   public oc!: string;
 }
