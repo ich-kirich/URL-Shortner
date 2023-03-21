@@ -8,7 +8,6 @@ const fetchStatistic = (id: string) => {
     try {
       dispatch({ type: LINK.FETCH_LINK });
       const response = await getStatistics(id);
-      console.log(response);
       dispatch({
         type: LINK.FETCH_LINK_SUCCESS,
         payload: response.data,

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import useActions from "../../hooks/useActions";
 import useTypedSelector from "../../hooks/useTypedSelector";
 import Loader from "../Loader/Loader";
+import StatisticTable from "../StatisticTable/StatisticTable";
 import ViewError from "../ViewError/ViewError";
 
 function StatisticPage() {
@@ -14,17 +15,14 @@ function StatisticPage() {
   useEffect(() => {
     fetchStatistic(id!);
   }, []);
-  console.log(link);
-  console.log(error);
-  console.log(loading);
   return (
-    <div>
+    <Box>
       {loading ? (
         <Loader />
       ) : (
-        <Box>{error ? <ViewError>{error}</ViewError> : <Box>{id}</Box>}</Box>
+        <Box>{error ? <ViewError>{error}</ViewError> : <StatisticTable />}</Box>
       )}
-    </div>
+    </Box>
   );
 }
 
