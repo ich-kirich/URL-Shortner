@@ -7,7 +7,7 @@ function AppRouter() {
   const routers = [
     { path: "/", element: <MainPage /> },
     { path: "/error", element: <ErrorPage /> },
-    { path: "/statistic", element: <StatisticPage /> },
+    { path: "/statistic/:id", element: <StatisticPage /> },
   ];
   return (
     <Routes>

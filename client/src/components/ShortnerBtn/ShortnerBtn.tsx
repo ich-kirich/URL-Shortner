@@ -2,17 +2,17 @@ import { Box, Button, Collapse, Paper, Typography } from "@mui/material";
 import { useState } from "react";
 import useActions from "../../hooks/useActions";
 import useTypedSelector from "../../hooks/useTypedSelector";
-import { IShortnerBtn } from "../../types/types";
+import { IShortnerBtnProps } from "../../types/types";
 import Loader from "../Loader/Loader";
 import ShortUrl from "../ShortUrl/ShortUrl";
 import ViewError from "../ViewError/ViewError";
 import styles from "./ShortnerBtn.module.scss";
 
-function ShortnerBtn(props: IShortnerBtn) {
+function ShortnerBtn(props: IShortnerBtnProps) {
   const { url, isError } = props;
   const { link, error, loading } = useTypedSelector((state) => state.link);
   const [visible, setVisible] = useState(false);
-  const fetchLink = useActions();
+  const { fetchLink } = useActions();
 
   const cutUrl = () => {
     fetchLink({ originalUrl: url });
@@ -28,7 +28,7 @@ function ShortnerBtn(props: IShortnerBtn) {
         onClick={cutUrl}
         className={styles.btn__cut}
       >
-        Click me!
+        Shorten Url!
       </Button>
       <Collapse in={visible}>
         {loading ? (

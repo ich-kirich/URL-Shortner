@@ -20,3 +20,14 @@
     align-items: center;
   }
 }
+
+.link_btns {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.bts_wrapper {
+  display: flex;
+  justify-content: center;
+}

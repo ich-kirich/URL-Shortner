@@ -33,7 +33,7 @@ export interface IChildernProps {
   className?: string;
 }
 
-export interface IShortnerBtn {
+export interface IShortnerBtnProps {
   url: string;
   isError: boolean;
 }
