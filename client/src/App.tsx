@@ -7,7 +7,7 @@ function App() {
   return (
     <StyledEngineProvider injectFirst>
       <Header />
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <AppRouter />
       </BrowserRouter>
     </StyledEngineProvider>
