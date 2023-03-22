@@ -1,7 +1,8 @@
 import IP from "ip";
 import geoip from "geoip-lite";
-import browser from "browser-detect";
 import { Request } from "express";
+import useragent from "useragent";
+import browser from "browser-detect";
 import Link from "../models/link";
 import Statistic from "../models/statistic";
 import { BASE_URL, UNKNOWN } from "./constants";
@@ -67,8 +68,9 @@ export function createStatistic(req: Request, id: number) {
   const geo = geoip.lookup(ipAddress);
   const userRegion = getCountry(geo);
   const userInf = browser(req.headers["user-agent"]);
-  const userBrowserName = userInf.name;
-  const userBrowserVersion = userInf.version;
+  const userAgent = useragent.parse(req.headers["user-agent"]);
+  const userBrowserName = userAgent.family;
+  const userBrowserVersion = userAgent.toVersion();
   const userOs = userInf.os;
   const date = createDate(new Date(Date.now()));
   Statistic.create({
