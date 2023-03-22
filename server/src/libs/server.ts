@@ -4,7 +4,7 @@ import browser from "browser-detect";
 import { Request } from "express";
 import Link from "../models/link";
 import Statistic from "../models/statistic";
-import { BASE_URL } from "./constants";
+import { BASE_URL, UNKNOWN } from "./constants";
 
 function createInfo(info: string, id: number) {
   if (info) {
@@ -21,6 +21,13 @@ function createInfo(info: string, id: number) {
       }),
     );
   }
+}
+
+function getCountry(geo: geoip.Lookup) {
+  if (geo === null) {
+    return UNKNOWN;
+  }
+  return geo.country;
 }
 
 export async function tryCatchWrapper(
@@ -50,24 +57,24 @@ export async function createUrl(
 }
 
 export function createDate(date: Date) {
-  return `${date.getSeconds()} ${date.getMinutes()} ${date.getHours()} ${date.getUTCDate()} ${
+  return `${date.getHours()}:${date.getMinutes()} ${date.getUTCDate()}.${
     date.getUTCMonth() + 1
-  } ${date.getUTCFullYear()}`;
+  }.${date.getUTCFullYear()}`;
 }
 
 export function createStatistic(req: Request, id: number) {
-  const ipAddress = IP.address(); // ip user
+  const ipAddress = IP.address();
   const geo = geoip.lookup(ipAddress);
-  // const region = geo.country; // region user
+  const userRegion = getCountry(geo);
   const userInf = browser(req.headers["user-agent"]);
-  const userBrowserName = userInf.name; // name browser
-  const userBrowserVersion = userInf.version; // version browser
-  const userOs = userInf.os; // os user
-  const date = createDate(new Date(Date.now())); // request date
+  const userBrowserName = userInf.name;
+  const userBrowserVersion = userInf.version;
+  const userOs = userInf.os;
+  const date = createDate(new Date(Date.now()));
   Statistic.create({
     data: date,
     ip: ipAddress,
-    region: "Belarus",
+    region: userRegion,
     browserName: userBrowserName,
     browserVersion: userBrowserVersion,
     oc: userOs,

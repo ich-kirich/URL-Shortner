@@ -1,11 +1,14 @@
-export interface IStatictic {
+interface IStatictic {
   id: number;
   data: string;
   ip: string;
   region: string;
-  browser: string;
+  browserName: string;
+  browserVersion: string;
   oc: string;
-  linkId: number;
+  LinkId: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface ILink {
@@ -44,4 +47,8 @@ export interface INewLink {
 
 export interface IShortUrlProps {
   link: ILink;
+}
+
+export interface IStaticticTableProps {
+  info: IStatictic[];
 }

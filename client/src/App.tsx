@@ -7,11 +7,9 @@ function App() {
   return (
     <StyledEngineProvider injectFirst>
       <Header />
-      <Container maxWidth="sm">
-        <BrowserRouter>
-          <AppRouter />
-        </BrowserRouter>
-      </Container>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
     </StyledEngineProvider>
   );
 }
