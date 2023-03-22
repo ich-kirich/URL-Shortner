@@ -1,4 +1,3 @@
-import { makeStyles } from "@mui/material";
 import { GridColDef } from "@mui/x-data-grid";
 
 export const ERROR_LOADING = "Error loading statistics";
@@ -30,41 +29,41 @@ export const COLUMNS: GridColDef[] = [
     headerName: "Date",
     editable: false,
     disableColumnMenu: true,
-    flex: 1,
+    width: 150,
   },
   {
     field: "region",
     headerName: "Region",
     editable: false,
     disableColumnMenu: true,
-    flex: 1,
+    width: 150,
   },
   {
     field: "ip",
     headerName: "IP",
     editable: false,
     disableColumnMenu: true,
-    flex: 1,
+    width: 150,
   },
   {
     field: "browserName",
     headerName: "Browser Name",
     editable: false,
     disableColumnMenu: true,
-    flex: 1,
+    width: 150,
   },
   {
     field: "browserVersion",
     headerName: "Browser Version",
     editable: false,
     disableColumnMenu: true,
-    flex: 1,
+    width: 150,
   },
   {
     field: "oc",
     headerName: "OC",
     editable: false,
     disableColumnMenu: true,
-    flex: 1,
+    width: 150,
   },
 ];

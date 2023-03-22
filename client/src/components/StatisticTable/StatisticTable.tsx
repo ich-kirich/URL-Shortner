@@ -7,7 +7,7 @@ function StatisticTable(props: IStaticticTableProps) {
   const { info } = props;
   return (
     <Box sx={{ height: 400, width: "100%" }}>
-      {info ? (
+      {info.length > 0 ? (
         <DataGrid
           rows={info}
           columns={COLUMNS}
