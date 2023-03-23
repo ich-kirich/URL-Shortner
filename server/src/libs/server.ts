@@ -58,9 +58,14 @@ export async function createUrl(
 }
 
 export function createDate(date: Date) {
-  return `${date.getHours()}:${date.getMinutes()} ${date.getUTCDate()}.${
+  return `${date.getHours()}:${date
+    .getMinutes()
+    .toString()
+    .padStart(2, "0")} ${date.getUTCDate().toString().padStart(2, "0")}.${(
     date.getUTCMonth() + 1
-  }.${date.getUTCFullYear()}`;
+  )
+    .toString()
+    .padStart(2, "0")}.${date.getUTCFullYear()}`;
 }
 
 export function createStatistic(req: Request, id: number) {

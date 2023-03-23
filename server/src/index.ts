@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import initDb from "./models/models";
 import router from "./routes/router";
-import ErrorHandling from "./middleware/ErrorHandlingMiddleWare";
+import ErrorHandling from "./middleware/errorHandlingMiddleware";
 import { PORT } from "./libs/constants";
 import { tryCatchWrapper } from "./libs/server";
 import ApiError from "./error/apiError";

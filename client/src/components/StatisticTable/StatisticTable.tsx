@@ -2,11 +2,12 @@ import { Box, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { COLUMNS, NONE_STATISTIC } from "../../libs/constants";
 import { IStaticticTableProps } from "../../types/types";
+import styles from "./StatisticTable.module.scss";
 
 function StatisticTable(props: IStaticticTableProps) {
   const { info } = props;
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box className={styles.table}>
       {info.length > 0 ? (
         <DataGrid
           rows={info}
