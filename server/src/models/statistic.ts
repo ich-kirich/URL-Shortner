@@ -1,7 +1,7 @@
 import { Model } from "sequelize";
 
 class Statistic extends Model {
-  public data!: string;
+  public date!: string;
 
   public ip!: string;
 
@@ -11,7 +11,7 @@ class Statistic extends Model {
 
   public browserVersion!: string;
 
-  public oc!: string;
+  public os!: string;
 }
 
 export default Statistic;

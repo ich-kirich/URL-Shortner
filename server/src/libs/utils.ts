@@ -7,20 +7,24 @@ import Link from "../models/link";
 import Statistic from "../models/statistic";
 import { BASE_URL, UNKNOWN } from "./constants";
 
-function createInfo(info: string, id: number) {
+async function createInfo(info: string, id: number) {
   if (info) {
-    const newStatistic = JSON.parse(info);
-    newStatistic.map((item: Statistic) =>
-      Statistic.create({
-        data: item.data,
-        ip: item.ip,
-        region: item.region,
-        browserName: item.browserName,
-        browserVersion: item.browserVersion,
-        oc: item.oc,
-        LinkId: id,
-      }),
-    );
+    try {
+      const newStatistic = JSON.parse(info);
+      newStatistic.map((item: Statistic) =>
+        Statistic.create({
+          date: item.date,
+          ip: item.ip,
+          region: item.region,
+          browserName: item.browserName,
+          browserVersion: item.browserVersion,
+          os: item.os,
+          LinkId: id,
+        }),
+      );
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 
@@ -29,17 +33,6 @@ function getCountry(geo: geoip.Lookup) {
     return UNKNOWN;
   }
   return geo.country;
-}
-
-export async function tryCatchWrapper(
-  callback: () => Promise<void | unknown>,
-  onError: Function,
-) {
-  try {
-    await callback();
-  } catch (e) {
-    onError(e);
-  }
 }
 
 export async function createUrl(
@@ -53,7 +46,7 @@ export async function createUrl(
   const link = await Link.create({ originalUrl, shortUrl: "" });
   link.shortUrl = `${BASE_URL}/${link.id}`;
   await link.save();
-  createInfo(info, link.id);
+  await createInfo(info, link.id);
   return link;
 }
 
@@ -68,7 +61,7 @@ export function createDate(date: Date) {
     .padStart(2, "0")}.${date.getUTCFullYear()}`;
 }
 
-export function createStatistic(req: Request, id: number) {
+export async function createStatistic(req: Request, id: number) {
   const ipAddress = IP.address();
   const geo = geoip.lookup(ipAddress);
   const userRegion = getCountry(geo);
@@ -77,14 +70,14 @@ export function createStatistic(req: Request, id: number) {
   const userBrowserName = userAgent.family;
   const userBrowserVersion = userAgent.toVersion();
   const userOs = userInf.os;
-  const date = createDate(new Date(Date.now()));
-  Statistic.create({
-    data: date,
+  const dateUser = createDate(new Date(Date.now()));
+  await Statistic.create({
+    date: dateUser,
     ip: ipAddress,
     region: userRegion,
     browserName: userBrowserName,
     browserVersion: userBrowserVersion,
-    oc: userOs,
+    os: userOs,
     LinkId: id,
   });
 }

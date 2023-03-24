@@ -65,7 +65,7 @@ const initDb = async () => {
   );
 
   Statistic.belongsTo(Link);
-  Link.hasMany(Statistic, { as: "info" });
+  Link.hasMany(Statistic, { as: "statistics" });
 
   await sequelize.authenticate();
   await sequelize.sync();
