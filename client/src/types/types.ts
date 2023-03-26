@@ -1,11 +1,11 @@
 interface IStatictic {
   id: number;
-  data: string;
+  date: string;
   ip: string;
   region: string;
   browserName: string;
   browserVersion: string;
-  oc: string;
+  os: string;
   LinkId: number;
   createdAt: string;
   updatedAt: string;
@@ -15,7 +15,7 @@ export interface ILink {
   id: number;
   originalUrl: string;
   shortUrl: string;
-  info: IStatictic[];
+  statistics: IStatictic[];
   createdAt: string;
   updatedAt: string;
 }
@@ -50,5 +50,5 @@ export interface IShortUrlProps {
 }
 
 export interface IStaticticTableProps {
-  info: IStatictic[];
+  statistics: IStatictic[];
 }

@@ -3,9 +3,10 @@ import geoip from "geoip-lite";
 import { Request } from "express";
 import useragent from "useragent";
 import browser from "browser-detect";
+import config from "config";
 import Link from "../models/link";
 import Statistic from "../models/statistic";
-import { BASE_URL, UNKNOWN } from "./constants";
+import { UNKNOWN } from "./constants";
 
 async function createInfo(info: string, id: number) {
   if (info) {
@@ -44,7 +45,7 @@ export async function createUrl(
     return checkLink;
   }
   const link = await Link.create({ originalUrl, shortUrl: "" });
-  link.shortUrl = `${BASE_URL}/${link.id}`;
+  link.shortUrl = `${config.get("BASE_URL")}/${link.id}`;
   await link.save();
   await createInfo(info, link.id);
   return link;

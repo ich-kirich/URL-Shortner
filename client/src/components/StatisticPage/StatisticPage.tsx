@@ -25,7 +25,11 @@ function StatisticPage() {
           {error ? (
             <ViewError>{error}</ViewError>
           ) : (
-            <Box>{link.info && <StatisticTable info={link.info} />}</Box>
+            <Box>
+              {link.statistics && (
+                <StatisticTable statistics={link.statistics} />
+              )}
+            </Box>
           )}
         </Box>
       )}

@@ -2,8 +2,6 @@ import { GridColDef } from "@mui/x-data-grid";
 
 export const ERROR_LOADING = "Error loading statistics";
 
-export const BASE_URL = "http://localhost:5000/";
-
 export const ERROR_PAGE = "ERROR: nonexistent page";
 
 export const NONE_STATISTIC = "No one has clicked on this url yet";
@@ -12,7 +10,7 @@ export const INITIAL_LINK = {
   id: 0,
   originalUrl: "init",
   shortUrl: "short",
-  info: [],
+  statistics: [],
   createdAt: "now",
   updatedAt: "now",
 };
@@ -25,7 +23,7 @@ export enum LINK {
 
 export const COLUMNS: GridColDef[] = [
   {
-    field: "data",
+    field: "date",
     headerName: "Date",
     editable: false,
     disableColumnMenu: true,
@@ -60,8 +58,8 @@ export const COLUMNS: GridColDef[] = [
     width: 150,
   },
   {
-    field: "oc",
-    headerName: "OC",
+    field: "os",
+    headerName: "OS",
     editable: false,
     disableColumnMenu: true,
     width: 150,

@@ -33,7 +33,7 @@ const initDb = async () => {
         autoIncrement: true,
         primaryKey: true,
       },
-      data: {
+      date: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -53,7 +53,7 @@ const initDb = async () => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      oc: {
+      os: {
         type: DataTypes.STRING,
         allowNull: false,
       },

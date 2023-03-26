@@ -5,12 +5,12 @@ import { IStaticticTableProps } from "../../types/types";
 import styles from "./StatisticTable.module.scss";
 
 function StatisticTable(props: IStaticticTableProps) {
-  const { info } = props;
+  const { statistics } = props;
   return (
     <Box className={styles.table}>
-      {info.length > 0 ? (
+      {statistics.length > 0 ? (
         <DataGrid
-          rows={info}
+          rows={statistics}
           columns={COLUMNS}
           autoHeight
           initialState={{
