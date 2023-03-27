@@ -1,12 +1,14 @@
 import { Paper, Box, Typography, Button } from "@mui/material";
 import AddLinkIcon from "@mui/icons-material/AddLink";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./ShortUrl.module.scss";
 import { IShortUrlProps } from "../../types/types";
+import { CONTEXT } from "../../libs/constants";
 
 function ShortUrl(props: IShortUrlProps) {
   const { link } = props;
+  const { translation } = useContext(CONTEXT);
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyClick = () => {
@@ -28,7 +30,7 @@ function ShortUrl(props: IShortUrlProps) {
           variant="contained"
           color="primary"
         >
-          {isCopied ? "Copied!" : "Copy"}
+          {isCopied ? translation("copied") : translation("copy")}
         </Button>
       </Paper>
       <Box className={styles.bts_wrapper}>
@@ -38,7 +40,7 @@ function ShortUrl(props: IShortUrlProps) {
           variant="contained"
           color="primary"
         >
-          Show statistics
+          {translation("show_statistics")}
         </Button>
       </Box>
     </Box>

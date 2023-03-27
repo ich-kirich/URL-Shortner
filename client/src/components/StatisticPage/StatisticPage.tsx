@@ -1,10 +1,8 @@
 import { Box, Container } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useActions from "../../hooks/useActions";
 import useTypedSelector from "../../hooks/useTypedSelector";
-import { COLUMNS } from "../../libs/constants";
 import Loader from "../Loader/Loader";
 import StatisticTable from "../StatisticTable/StatisticTable";
 import ViewError from "../ViewError/ViewError";

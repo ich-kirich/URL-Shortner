@@ -2,7 +2,6 @@ import axios from "axios";
 import { INewLink } from "../types/types";
 
 export async function addLink(link: INewLink) {
-  console.log(process.env.REACT_APP_BASE_URL);
   const response = await axios.post(
     String(process.env.REACT_APP_BASE_URL),
     link,

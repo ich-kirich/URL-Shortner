@@ -1,6 +1,7 @@
 import { Dispatch } from "redux";
+import i18n from "i18next";
 import { addLink } from "../../API/PostService";
-import { ERROR_LOADING, LINK } from "../../libs/constants";
+import { LINK } from "../../libs/constants";
 import { ILinkAction, INewLink } from "../../types/types";
 
 const fetchLink = (link: INewLink) => {
@@ -13,7 +14,10 @@ const fetchLink = (link: INewLink) => {
         payload: response.data,
       });
     } catch (e) {
-      dispatch({ type: LINK.FETCH_LINK_ERROR, payload: ERROR_LOADING });
+      dispatch({
+        type: LINK.FETCH_LINK_ERROR,
+        payload: i18n.t("error_loading"),
+      });
     }
   };
 };

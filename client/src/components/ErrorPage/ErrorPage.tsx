@@ -1,8 +1,10 @@
-import { ERROR_PAGE } from "../../libs/constants";
+import { useContext } from "react";
+import { CONTEXT } from "../../libs/constants";
 import ViewError from "../ViewError/ViewError";
 
 function ErrorPage() {
-  return <ViewError>{ERROR_PAGE}</ViewError>;
+  const { translation } = useContext(CONTEXT);
+  return <ViewError>{translation("error_page")}</ViewError>;
 }
 
 export default ErrorPage;

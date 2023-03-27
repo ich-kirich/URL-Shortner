@@ -1,4 +1,4 @@
-import { Box, Button, Collapse, Paper, Typography } from "@mui/material";
+import { Box, Button, Collapse } from "@mui/material";
 import { useState } from "react";
 import useActions from "../../hooks/useActions";
 import useTypedSelector from "../../hooks/useTypedSelector";

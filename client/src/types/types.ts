@@ -1,3 +1,5 @@
+import { TFunction } from "i18next";
+
 interface IStatictic {
   id: number;
   date: string;
@@ -51,4 +53,8 @@ export interface IShortUrlProps {
 
 export interface IStaticticTableProps {
   statistics: IStatictic[];
+}
+
+export interface IContext {
+  translation: TFunction<"translation", undefined, "translation">;
 }
