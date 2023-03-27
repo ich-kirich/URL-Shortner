@@ -14,7 +14,7 @@ function getCountry(geo: geoip.Lookup) {
 }
 
 export async function createStatistic(req: Request, id: number) {
-  const ipAddress = IP.address();
+  const ipAddress = req.ip;
   const geo = geoip.lookup(ipAddress);
   const userRegion = getCountry(geo);
   const userInf = browser(req.headers["user-agent"]);

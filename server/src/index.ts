@@ -13,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use("", router);
 app.use(ErrorHandling);
+app.set("trust proxy", true);
 
 dotenv.config();
 const startServer = async () => {
