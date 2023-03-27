@@ -1,5 +1,5 @@
 import { INITIAL_LINK, LINK } from "../../libs/constants";
-import { ILinkAction, ILinkState } from "../../types/types";
+import { IAction, ILinkState } from "../../types/types";
 
 const initialState: ILinkState = {
   link: INITIAL_LINK,
@@ -9,7 +9,7 @@ const initialState: ILinkState = {
 
 const linkReducer = (
   state: ILinkState = initialState,
-  action: ILinkAction,
+  action: IAction,
 ): ILinkState => {
   switch (action.type) {
     case LINK.FETCH_LINK:

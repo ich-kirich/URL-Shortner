@@ -13,7 +13,9 @@ function StatisticPage() {
   useEffect(() => {
     fetchStatistic(id!);
   }, []);
-  const { link, error, loading } = useTypedSelector((state) => state.statistic);
+  const { statistic, error, loading } = useTypedSelector(
+    (state) => state.statistic,
+  );
   return (
     <Container maxWidth="lg">
       {loading ? (
@@ -23,11 +25,7 @@ function StatisticPage() {
           {error ? (
             <ViewError>{error}</ViewError>
           ) : (
-            <Box>
-              {link.statistics && (
-                <StatisticTable statistics={link.statistics} />
-              )}
-            </Box>
+            <StatisticTable statistics={statistic} />
           )}
         </Box>
       )}

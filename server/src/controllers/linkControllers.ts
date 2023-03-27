@@ -22,12 +22,13 @@ class LinkControllers {
   async getLink(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
-      const link = await Link.findOne({
-        where: { id },
-        include: [{ model: Statistic, as: "statistics" }],
+      const stats = await Statistic.findAll({
+        where: {
+          LinkId: id,
+        },
       });
-      if (link) {
-        return res.json(link);
+      if (stats) {
+        return res.json(stats);
       }
       return next(new ApiError(StatusCodes.NOT_FOUND, ERROR_NOT_FOUND));
     } catch (e) {

@@ -28,7 +28,7 @@ export interface ILinkState {
   error: null | string;
 }
 
-export interface ILinkAction {
+export interface IAction {
   type: string;
   payload?: any;
 }
@@ -57,4 +57,10 @@ export interface IStaticticTableProps {
 
 export interface IContext {
   translation: TFunction<"translation", undefined, "translation">;
+}
+
+export interface IStatisticState {
+  statistic: IStatictic[];
+  loading: boolean;
+  error: null | string;
 }

@@ -2,10 +2,10 @@ import { Dispatch } from "redux";
 import i18n from "i18next";
 import { addLink } from "../../API/PostService";
 import { LINK } from "../../libs/constants";
-import { ILinkAction, INewLink } from "../../types/types";
+import { IAction, INewLink } from "../../types/types";
 
 const fetchLink = (link: INewLink) => {
-  return async (dispatch: Dispatch<ILinkAction>) => {
+  return async (dispatch: Dispatch<IAction>) => {
     try {
       dispatch({ type: LINK.FETCH_LINK });
       const response = await addLink(link);

@@ -1,21 +1,21 @@
 import { Dispatch } from "redux";
 import i18n from "i18next";
 import { getStatistics } from "../../API/PostService";
-import { LINK } from "../../libs/constants";
-import { ILinkAction } from "../../types/types";
+import { STATS } from "../../libs/constants";
+import { IAction } from "../../types/types";
 
 const fetchStatistic = (id: string) => {
-  return async (dispatch: Dispatch<ILinkAction>) => {
+  return async (dispatch: Dispatch<IAction>) => {
     try {
-      dispatch({ type: LINK.FETCH_LINK });
+      dispatch({ type: STATS.FETCH_STATS });
       const response = await getStatistics(id);
       dispatch({
-        type: LINK.FETCH_LINK_SUCCESS,
+        type: STATS.FETCH_STATS_SUCCESS,
         payload: response.data,
       });
     } catch (e) {
       dispatch({
-        type: LINK.FETCH_LINK_ERROR,
+        type: STATS.FETCH_STATS_ERROR,
         payload: i18n.t("error_loading"),
       });
     }
