@@ -1,9 +1,11 @@
 import { NextFunction, Request, Response } from "express";
+import { StatusCodes } from "http-status-codes";
 import Link from "../models/link";
 import Statistic from "../models/statistic";
 import ApiError from "../error/apiError";
-import { createStatistic, createUrl } from "../libs/utils";
+import { createUrl } from "../services/linkService";
 import { ERROR_NOT_FOUND } from "../libs/constants";
+import { createStatistic } from "../services/statisticService";
 
 class LinkControllers {
   async createLink(req: Request, res: Response, next: NextFunction) {
@@ -13,7 +15,7 @@ class LinkControllers {
       const link = await createUrl(checkLink, originalUrl, info);
       return res.json(link);
     } catch (e) {
-      return next(ApiError.badRequest(e.message));
+      return next(new ApiError(StatusCodes.BAD_REQUEST, e.message));
     }
   }
 
@@ -27,9 +29,9 @@ class LinkControllers {
       if (link) {
         return res.json(link);
       }
-      return next(ApiError.badRequest(ERROR_NOT_FOUND));
+      return next(new ApiError(StatusCodes.NOT_FOUND, ERROR_NOT_FOUND));
     } catch (e) {
-      return next(ApiError.badRequest(e.message));
+      return next(new ApiError(StatusCodes.BAD_REQUEST, e.message));
     }
   }
 
@@ -44,7 +46,7 @@ class LinkControllers {
         res.sendStatus(404);
       }
     } catch (e) {
-      next(ApiError.badRequest(e.message));
+      next(new ApiError(StatusCodes.NOT_FOUND, ERROR_NOT_FOUND));
     }
   }
 }

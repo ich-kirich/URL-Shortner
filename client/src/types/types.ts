@@ -1,8 +1,8 @@
 import { TFunction } from "i18next";
 
-interface IStatictic {
+export interface IStatictic {
   id: number;
-  date: string;
+  date: Date | string;
   ip: string;
   region: string;
   browserName: string;

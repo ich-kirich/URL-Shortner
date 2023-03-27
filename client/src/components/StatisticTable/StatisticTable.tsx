@@ -2,12 +2,14 @@ import { Box, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useContext } from "react";
 import { CONTEXT } from "../../libs/constants";
+import { correctDate } from "../../libs/link";
 import { IStaticticTableProps } from "../../types/types";
 import styles from "./StatisticTable.module.scss";
 
 function StatisticTable(props: IStaticticTableProps) {
   const { statistics } = props;
   const { translation } = useContext(CONTEXT);
+  const correctStatistics = correctDate(statistics);
   const COLUMNS: GridColDef[] = [
     {
       field: "date",
@@ -54,9 +56,9 @@ function StatisticTable(props: IStaticticTableProps) {
   ];
   return (
     <Box className={styles.table}>
-      {statistics.length > 0 ? (
+      {correctStatistics.length > 0 ? (
         <DataGrid
-          rows={statistics}
+          rows={correctStatistics}
           columns={COLUMNS}
           autoHeight
           initialState={{

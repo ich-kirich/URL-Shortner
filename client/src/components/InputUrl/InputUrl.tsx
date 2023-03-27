@@ -1,7 +1,7 @@
 import { Box, TextField } from "@mui/material";
 import { useContext, useState } from "react";
 import ShortnerBtn from "../ShortnerBtn/ShortnerBtn";
-import isValidUrl from "../../libs/link";
+import { isValidUrl } from "../../libs/link";
 import styles from "./InputUrl.module.scss";
 import { CONTEXT } from "../../libs/constants";
 

@@ -15,5 +15,8 @@
   "ip": "IP",
   "browser_name": "Browser Name",
   "browser_version": "Browser Version",
-  "os": "OS"
+  "os": "OS",
+  "en": "English",
+  "ru": "Russian",
+  "shorten_url": "Shorten Url!"
 }

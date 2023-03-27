@@ -34,7 +34,7 @@ const initDb = async () => {
         primaryKey: true,
       },
       date: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull: false,
       },
       ip: {

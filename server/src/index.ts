@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import config from "config";
 import dotenv from "dotenv";
+import { StatusCodes } from "http-status-codes";
 import initDb from "./models/models";
 import router from "./routes/router";
 import ErrorHandling from "./middleware/errorHandlingMiddleware";
@@ -21,7 +22,7 @@ const startServer = async () => {
       console.log(`Running on port ${config.get("PORT")}`),
     );
   } catch (e) {
-    console.error(ApiError.internal(e.message));
+    console.error(new ApiError(StatusCodes.INTERNAL_SERVER_ERROR, e.message));
   }
 };
 
