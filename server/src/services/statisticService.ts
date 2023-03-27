@@ -1,4 +1,3 @@
-import IP from "ip";
 import geoip from "geoip-lite";
 import { Request } from "express";
 import useragent from "useragent";

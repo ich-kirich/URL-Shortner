@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import config from "config";
-import dotenv from "dotenv";
 import { StatusCodes } from "http-status-codes";
 import initDb from "./models/models";
 import router from "./routes/router";
@@ -15,7 +14,6 @@ app.use("", router);
 app.use(ErrorHandling);
 app.set("trust proxy", true);
 
-dotenv.config();
 const startServer = async () => {
   try {
     await initDb();
