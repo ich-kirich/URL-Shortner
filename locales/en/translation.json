@@ -1,0 +1,22 @@
+{
+  "url_shortner": "URL Shortner",
+  "your_url": "Your url:",
+  "enter_your_url": "Enter your url...",
+  "enter_url": "Enter url...",
+  "there_was_error": "There was an error:",
+  "copied": "Copied!",
+  "copy": "Copy",
+  "show_statistics": "Show statistics",
+  "error_page": "ERROR: nonexistent page",
+  "none_statistic": "No one has clicked on this url yet",
+  "error_loading": "Error loading statistics",
+  "date": "Date",
+  "region": "Region",
+  "ip": "IP",
+  "browser_name": "Browser Name",
+  "browser_version": "Browser Version",
+  "os": "OS",
+  "en": "English",
+  "ru": "Russian",
+  "shorten_url": "Shorten Url!"
+}
