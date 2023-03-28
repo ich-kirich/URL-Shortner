@@ -17,6 +17,7 @@ export interface ILink {
   id: number;
   originalUrl: string;
   shortUrl: string;
+  shortCode: string;
   statistics: IStatictic[];
   createdAt: string;
   updatedAt: string;

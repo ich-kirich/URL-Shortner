@@ -36,7 +36,7 @@ function ShortUrl(props: IShortUrlProps) {
       <Box className={styles.bts_wrapper}>
         <Button
           component={Link}
-          to={`/statistic/${link.id}`}
+          to={`/statistic/${link.shortCode}`}
           variant="contained"
           color="primary"
         >

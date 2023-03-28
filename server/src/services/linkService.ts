@@ -1,4 +1,5 @@
 import config from "config";
+import { v4 as uuidv4 } from "uuid";
 import Link from "../models/link";
 import Statistic from "../models/statistic";
 
@@ -35,8 +36,12 @@ export async function createUrl(
   if (checkLink) {
     return checkLink;
   }
-  const link = await Link.create({ originalUrl, shortUrl: "" });
-  link.shortUrl = `${config.get("BASE_URL")}/${link.id}`;
+  const link = await Link.create({
+    originalUrl,
+    shortUrl: "",
+    shortCode: uuidv4(),
+  });
+  link.shortUrl = `${config.get("BASE_URL")}/${link.shortCode}`;
   await link.save();
   await createInfo(info, link.id);
   return link;

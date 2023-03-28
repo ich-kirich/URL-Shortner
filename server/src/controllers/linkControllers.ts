@@ -21,10 +21,15 @@ class LinkControllers {
 
   async getLink(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = req.params;
+      const codeUrl = req.params.id;
+      const link = await Link.findOne({
+        where: {
+          shortCode: codeUrl,
+        },
+      });
       const stats = await Statistic.findAll({
         where: {
-          LinkId: id,
+          LinkId: link.id,
         },
       });
       if (stats) {
@@ -38,8 +43,13 @@ class LinkControllers {
 
   async redirectByLink(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = req.params;
-      const link = await Link.findByPk(id);
+      const codeUrl = req.params.id;
+      const link = await Link.findOne({
+        where: {
+          shortCode: codeUrl,
+        },
+      });
+      console.log(link);
       if (link) {
         await createStatistic(req, link.id);
         res.redirect(link.originalUrl);

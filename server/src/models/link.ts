@@ -6,6 +6,8 @@ class Link extends Model {
   public originalUrl!: string;
 
   public shortUrl!: string;
+
+  public shortCode!: string;
 }
 
 export default Link;

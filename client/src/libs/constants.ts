@@ -7,6 +7,7 @@ export const INITIAL_LINK = {
   id: 0,
   originalUrl: "init",
   shortUrl: "short",
+  shortCode: "code",
   statistics: [],
   createdAt: "now",
   updatedAt: "now",

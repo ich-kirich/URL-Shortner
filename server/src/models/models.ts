@@ -19,6 +19,11 @@ const initDb = async () => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      shortCode: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
     },
     {
       sequelize,
