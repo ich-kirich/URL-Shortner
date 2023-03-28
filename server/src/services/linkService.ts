@@ -36,14 +36,14 @@ export async function createUrl(
   if (checkLink) {
     return checkLink;
   }
+  const code = uuidv4().slice(0, 8);
   const link = await Link.create({
     originalUrl,
-    shortUrl: "",
-    shortCode: uuidv4(),
+    shortUrl: `${config.get("BASE_URL")}/${code}`,
+    shortCode: code,
   });
-  link.shortUrl = `${config.get("BASE_URL")}/${link.shortCode}`;
   await link.save();
-  await createInfo(info, link.id);
+  await createInfo(info, link.dataValues.id);
   return link;
 }
 

@@ -29,7 +29,7 @@ class LinkControllers {
       });
       const stats = await Statistic.findAll({
         where: {
-          LinkId: link.id,
+          LinkId: link.dataValues.id,
         },
       });
       if (stats) {
@@ -49,10 +49,9 @@ class LinkControllers {
           shortCode: codeUrl,
         },
       });
-      console.log(link);
       if (link) {
-        await createStatistic(req, link.id);
-        res.redirect(link.originalUrl);
+        await createStatistic(req, link.dataValues.id);
+        res.redirect(link.dataValues.originalUrl);
       } else {
         res.sendStatus(404);
       }

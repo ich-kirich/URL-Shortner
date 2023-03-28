@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db";
 import Link from "./link";
+import umzug from "./migration";
 import Statistic from "./statistic";
 
 const initDb = async () => {
@@ -73,7 +74,7 @@ const initDb = async () => {
   Link.hasMany(Statistic, { as: "statistics" });
 
   await sequelize.authenticate();
-  await sequelize.sync();
+  await umzug.up();
 };
 
 export default initDb;
