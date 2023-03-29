@@ -28,6 +28,19 @@ async function createInfo(info: string, id: number) {
   }
 }
 
+async function createShortCode() {
+  const code = uuidv4().slice(0, 8);
+  const link = await Link.findOne({
+    where: {
+      shortCode: code,
+    },
+  });
+  if(link){
+    createShortCode()
+  }
+  return code
+}
+
 export async function createUrl(
   checkLink: Link,
   originalUrl: string,
@@ -36,7 +49,7 @@ export async function createUrl(
   if (checkLink) {
     return checkLink;
   }
-  const code = uuidv4().slice(0, 8);
+  const code = await createShortCode();
   const link = await Link.create({
     originalUrl,
     shortUrl: `${config.get("BASE_URL")}/${code}`,
