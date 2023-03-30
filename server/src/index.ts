@@ -4,7 +4,7 @@ import config from "config";
 import { StatusCodes } from "http-status-codes";
 import initDb from "./models/models";
 import router from "./routes/router";
-import ErrorHandling from "./middleware/errorHandlingMiddleware";
+import ErrorHandling from "./middleware/errorhandlingmiddleware";
 import ApiError from "./error/apiError";
 
 const app = express();
@@ -13,6 +13,8 @@ app.use(express.json());
 app.use("", router);
 app.use(ErrorHandling);
 app.set("trust proxy", true);
+
+console.log(config.get("PORT"));
 
 const startServer = async () => {
   try {

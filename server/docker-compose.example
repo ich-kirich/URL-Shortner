@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  url_backend:
+    container_name: url_backend
+    image: francescoxx/nsp-template:0.0.2
+    build:
+      context: .
+    ports:
+      - "5000:5000"
+    environment:
+      - EXTERNAL_PORT=
+      - DB_USER=
+      - DB_PASSWORD=
+      - DB_NAME=
+      - DB_HOST=
+    depends_on:
+      - url_backend_db
+  url_backend_db:
+    container_name: url_backend_db
+    image: "postgres:12"
+    ports:
+      - "5432:5432"
+    environment:
+      - DB_USER=
+      - DB_PASSWORD=
+      - DB_NAME=
+    volumes:
+      - url_backend_data:/var/lib/postgresql/data
+volumes:
+  url_backend_data: {}
