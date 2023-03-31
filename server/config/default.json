@@ -1,0 +1,10 @@
+{
+  "PORT": 5000,
+  "DB_NAME": "url_shortner",
+  "DB_USER": "postgres",
+  "DB_PASSWORD": "rootkm",
+  "DB_HOST": "localhost",
+  "DB_PORT": 5432,
+  "PUBLIC_URL": "/URL-Shortner",
+  "BASE_URL": "http://localhost:5000"
+}

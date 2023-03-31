@@ -14,8 +14,6 @@ app.use("", router);
 app.use(ErrorHandling);
 app.set("trust proxy", true);
 
-console.log(config.get("PORT"));
-
 const startServer = async () => {
   try {
     await initDb();

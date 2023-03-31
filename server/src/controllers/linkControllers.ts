@@ -6,6 +6,8 @@ import ApiError from "../error/apiError";
 import { createUrl } from "../services/linkService";
 import { ERROR_NOT_FOUND } from "../libs/constants";
 import { createStatistic } from "../services/statisticService";
+import useragent from "useragent";
+import browser from "browser-detect";
 
 class LinkControllers {
   async createLink(req: Request, res: Response, next: NextFunction) {
@@ -50,13 +52,18 @@ class LinkControllers {
         },
       });
       if (link) {
-        await createStatistic(req, link.dataValues.id);
+        const ipAddress = req.ip;
+        const userInf = browser(req.headers["user-agent"]);
+        const userAgent = useragent.parse(req.headers["user-agent"]);
+        await createStatistic(link.dataValues.id, ipAddress, userInf, userAgent);
         res.redirect(link.dataValues.originalUrl);
+        return;
       } else {
         res.sendStatus(404);
+        return;
       }
     } catch (e) {
-      next(new ApiError(StatusCodes.NOT_FOUND, ERROR_NOT_FOUND));
+      return next(new ApiError(StatusCodes.NOT_FOUND, ERROR_NOT_FOUND));
     }
   }
 }

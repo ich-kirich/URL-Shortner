@@ -1,9 +1,9 @@
 import geoip from "geoip-lite";
 import { Request } from "express";
-import useragent from "useragent";
-import browser from "browser-detect";
 import Statistic from "../models/statistic";
 import { UNKNOWN } from "../libs/constants";
+import { BrowserDetectInfo } from "browser-detect/dist/types/browser-detect.interface";
+import useragent from "useragent";
 
 function getCountry(geo: geoip.Lookup) {
   if (geo === null) {
@@ -12,17 +12,14 @@ function getCountry(geo: geoip.Lookup) {
   return geo.country;
 }
 
-export async function createStatistic(req: Request, id: number) {
-  const ipAddress = req.ip;
+export async function createStatistic(id: number, ipAddress: string, userInf: BrowserDetectInfo , userAgent: useragent.Agent) {
   const geo = geoip.lookup(ipAddress);
   const userRegion = getCountry(geo);
-  const userInf = browser(req.headers["user-agent"]);
-  const userAgent = useragent.parse(req.headers["user-agent"]);
   const userBrowserName = userAgent.family;
   const userBrowserVersion = userAgent.toVersion();
   const userOs = userInf.os;
   const dateUser = new Date(Date.now());
-  await Statistic.create({
+  return await Statistic.create({
     date: dateUser,
     ip: ipAddress,
     region: userRegion,

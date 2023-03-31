@@ -1,4 +1,5 @@
-import { Model } from "sequelize";
+import { DataTypes, Model } from "sequelize";
+import sequelize from "../db";
 
 class Statistic extends Model {
   public date!: string;
@@ -13,5 +14,43 @@ class Statistic extends Model {
 
   public os!: string;
 }
+
+Statistic.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    ip: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    region: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    browserName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    browserVersion: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    os: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    tableName: "statistics",
+  },
+);
 
 export default Statistic;

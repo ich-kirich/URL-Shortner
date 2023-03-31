@@ -1,4 +1,4 @@
-# URL_Shortner
+# URL-Shortner
 It is a full-stack web application that shortens a link and also allows you to view statistics of who clicked on it
 ***
 ## Installation

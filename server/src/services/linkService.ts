@@ -1,5 +1,5 @@
 import config from "config";
-import { v4 as uuidv4 } from "uuid";
+import { nanoid } from "nanoid";
 import Link from "../models/link";
 import Statistic from "../models/statistic";
 
@@ -7,7 +7,7 @@ async function createInfo(info: string, id: number) {
   if (info) {
     try {
       const newStatistic = JSON.parse(info);
-      newStatistic.forEach(async (item: Statistic) => {
+      for (const item of newStatistic){
         try {
           await Statistic.create({
             date: item.date,
@@ -18,10 +18,11 @@ async function createInfo(info: string, id: number) {
             os: item.os,
             LinkId: id,
           });
+          return;
         } catch (e) {
           console.error(e.message);
         }
-      });
+      }
     } catch (e) {
       console.error(e.message);
     }
@@ -29,7 +30,7 @@ async function createInfo(info: string, id: number) {
 }
 
 async function createShortCode() {
-  const code = uuidv4().slice(0, 8);
+  const code = nanoid(8);
   const link = await Link.findOne({
     where: {
       shortCode: code,
