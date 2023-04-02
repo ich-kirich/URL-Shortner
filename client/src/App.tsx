@@ -1,25 +1,33 @@
 import { StyledEngineProvider } from "@mui/material";
-import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { useState, useMemo } from "react";
+import { IntlProvider } from "react-intl";
 import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./components/AppRouter/AppRouter";
 import Header from "./components/Header/Header";
 import { CONTEXT } from "./libs/constants";
+import { LOCALES, messages } from "./locales/locales";
 
 function App() {
-  const { t } = useTranslation();
+  const [currentLocale, setCurrentLocale] = useState(LOCALES.ENGLISH);
   const contextValue = useMemo(
     () => ({
-      translation: t,
+      locale: currentLocale,
+      setLocale: setCurrentLocale,
     }),
-    [t],
+    [currentLocale, setCurrentLocale],
   );
   return (
     <StyledEngineProvider injectFirst>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <CONTEXT.Provider value={contextValue}>
-          <Header />
-          <AppRouter />
+          <IntlProvider
+            messages={messages[currentLocale]}
+            locale={currentLocale}
+            defaultLocale={LOCALES.ENGLISH}
+          >
+            <Header />
+            <AppRouter />
+          </IntlProvider>
         </CONTEXT.Provider>
       </BrowserRouter>
     </StyledEngineProvider>

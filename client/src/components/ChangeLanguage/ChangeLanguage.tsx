@@ -1,26 +1,29 @@
 import { Box, MenuItem } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useContext, useState } from "react";
-import i18n from "i18next";
-import styles from "./ChangeLanguage.module.scss";
+import { useContext } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import { CONTEXT } from "../../libs/constants";
+import { LOCALES } from "../../locales/locales";
+import styles from "./ChangeLanguage.module.scss";
 
 function ChangeLanguage() {
-  const { translation } = useContext(CONTEXT);
-  const [language, setLanguage] = useState(i18n.language);
+  const { locale, setLocale } = useContext(CONTEXT);
   const handleChange = (event: SelectChangeEvent) => {
-    setLanguage(event.target.value as string);
-    i18n.changeLanguage(event.target.value as string);
+    setLocale(event.target.value as string);
   };
   return (
     <Box className={styles.choose_wrapper}>
       <Select
-        value={language}
+        value={locale}
         onChange={handleChange}
         className={styles.choose_list}
       >
-        <MenuItem value="ru">{translation("ru")}</MenuItem>
-        <MenuItem value="en">{translation("en")}</MenuItem>
+        <MenuItem value={LOCALES.RUSSIAN}>
+          <FormattedMessage id="ru" />
+        </MenuItem>
+        <MenuItem value={LOCALES.ENGLISH}>
+          <FormattedMessage id="en" />
+        </MenuItem>
       </Select>
     </Box>
   );

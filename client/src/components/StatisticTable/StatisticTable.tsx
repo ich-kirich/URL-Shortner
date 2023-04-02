@@ -1,54 +1,53 @@
 import { Box, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { useContext } from "react";
-import { CONTEXT } from "../../libs/constants";
+import { FormattedMessage, useIntl } from "react-intl";
 import { correctDate } from "../../libs/link";
 import { IStaticticTableProps } from "../../types/types";
 import styles from "./StatisticTable.module.scss";
 
 function StatisticTable(props: IStaticticTableProps) {
   const { statistics } = props;
-  const { translation } = useContext(CONTEXT);
+  const translate = useIntl();
   const correctStatistics = correctDate(statistics);
   const COLUMNS: GridColDef[] = [
     {
       field: "date",
-      headerName: `${translation("date")}`,
+      headerName: translate.formatMessage({ id: "date" }),
       editable: false,
       disableColumnMenu: true,
       width: 150,
     },
     {
       field: "region",
-      headerName: `${translation("region")}`,
+      headerName: translate.formatMessage({ id: "region" }),
       editable: false,
       disableColumnMenu: true,
       width: 150,
     },
     {
       field: "ip",
-      headerName: `${translation("ip")}`,
+      headerName: translate.formatMessage({ id: "ip" }),
       editable: false,
       disableColumnMenu: true,
       width: 150,
     },
     {
       field: "browserName",
-      headerName: `${translation("browser_name")}`,
+      headerName: translate.formatMessage({ id: "browser_name" }),
       editable: false,
       disableColumnMenu: true,
       width: 150,
     },
     {
       field: "browserVersion",
-      headerName: `${translation("browser_version")}`,
+      headerName: translate.formatMessage({ id: "browser_version" }),
       editable: false,
       disableColumnMenu: true,
       width: 150,
     },
     {
       field: "os",
-      headerName: `${translation("os")}`,
+      headerName: translate.formatMessage({ id: "os" }),
       editable: false,
       disableColumnMenu: true,
       width: 150,
@@ -73,7 +72,7 @@ function StatisticTable(props: IStaticticTableProps) {
         />
       ) : (
         <Typography variant="h6" component="h1">
-          {translation("none_statistic")}
+          <FormattedMessage id="none_statistic" />
         </Typography>
       )}
     </Box>

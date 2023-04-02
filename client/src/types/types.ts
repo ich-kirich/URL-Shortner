@@ -1,5 +1,3 @@
-import { TFunction } from "i18next";
-
 export interface IStatictic {
   id: number;
   date: Date | string;
@@ -56,12 +54,13 @@ export interface IStaticticTableProps {
   statistics: IStatictic[];
 }
 
-export interface IContext {
-  translation: TFunction<"translation", undefined, "translation">;
-}
-
 export interface IStatisticState {
   statistic: IStatictic[];
   loading: boolean;
   error: null | string;
+}
+
+export interface IContext {
+  locale: string;
+  setLocale: Function;
 }
