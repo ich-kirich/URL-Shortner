@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from "../db";
+import sequelize from "../src/db";
 
 class Statistic extends Model {
   public date!: string;

@@ -15,6 +15,8 @@ npm install
 - npm install - Set up all necessary dependencies
 #### Launch server part:
 - npm start - build the project and start the server
+- npx sequelize-cli db:migrate - start the migration process
+- npx sequelize-cli db:seed:all - upload seeds(optional)
 - npm run dev - start the project in developer mode and start the server
 #### Launch client part:
 - npm start - start the project in developer mode and start the client

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import Link from "../models/link";
-import Statistic from "../models/statistic";
+import Link from "../../models/link";
+import Statistic from "../../models/statistic";
 import ApiError from "../error/apiError";
 import { createUrl } from "../services/linkService";
 import { ERROR_NOT_FOUND } from "../libs/constants";

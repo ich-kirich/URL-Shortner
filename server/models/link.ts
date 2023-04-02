@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from "../db";
+import sequelize from "../src/db";
+import Statistic from "./statistic";
 
 class Link extends Model {
   public id!: number;
@@ -20,7 +21,7 @@ Link.init(
     },
     originalUrl: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     shortUrl: {
       type: DataTypes.STRING,

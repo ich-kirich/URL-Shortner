@@ -1,7 +1,7 @@
 import config from "config";
 import { nanoid } from "nanoid";
-import Link from "../models/link";
-import Statistic from "../models/statistic";
+import Link from "../../models/link";
+import Statistic from "../../models/statistic";
 
 async function createInfo(info: string, id: number) {
   if (info) {
