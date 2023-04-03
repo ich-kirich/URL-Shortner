@@ -1,5 +1,4 @@
 import geoip from "geoip-lite";
-import { Request } from "express";
 import Statistic from "../../models/statistic";
 import { UNKNOWN } from "../libs/constants";
 import { BrowserDetectInfo } from "browser-detect/dist/types/browser-detect.interface";

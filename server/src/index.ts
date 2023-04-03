@@ -16,7 +16,7 @@ app.set("trust proxy", true);
 
 const startServer = async () => {
   try {
-    await initDb();;
+    await initDb();
     app.listen(config.get("PORT"), () =>
       console.log(`Running on port ${config.get("PORT")}`),
     );

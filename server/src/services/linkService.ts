@@ -18,11 +18,11 @@ async function createInfo(info: string, id: number) {
             os: item.os,
             LinkId: id,
           });
-          return;
         } catch (e) {
           console.error(e.message);
         }
       }
+      return;
     } catch (e) {
       console.error(e.message);
     }
