@@ -1,6 +1,5 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../src/db";
-import Statistic from "./statistic";
 
 class Link extends Model {
   public id!: number;

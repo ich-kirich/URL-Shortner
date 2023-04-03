@@ -23,7 +23,7 @@ npm install
 - npm run build - build the project
 ***
 ## Technology stack
-- Backend: NodeJs, Dotenv, Typescript, Eslint, Nodemon, PostgreSQL, Eslint, Prettier, Postman, ExpressJS, Sequelize ORM, GeoIpLight, BrowserDetec, IP, UserAgent, Http-status-codes, Node-config, Uuid, Umzug
+- Backend: NodeJs, Dotenv, Typescript, Eslint, Nodemon, PostgreSQL, Eslint, Prettier, Postman, ExpressJS, Sequelize ORM, Docker, GeoIpLight, BrowserDetec, IP, UserAgent, Http-status-codes, Node-config, Nanoid, Cross-env
 - Frontend: React, Redux, Typescript, Material UI, SCSS, Eslint, Prettier, Axios, Normalize CSS
 ***
 ## This is my [result](https://ich-kirich.github.io/URL-Shortner/)
