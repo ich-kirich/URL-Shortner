@@ -1,6 +1,6 @@
 {
-  "name": "url_shortner",
   "username": "postgres",
+  "database": "url_shortner",
   "host": "localhost",
   "port": "5432",
   "dialect": "postgres",

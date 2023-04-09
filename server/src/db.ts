@@ -2,7 +2,7 @@ import config from "config";
 import { Sequelize } from "sequelize";
 
 const sequelize = new Sequelize(
-  String(config.get("name")),
+  String(config.get("database")),
   String(config.get("username")),
   String(config.get("password")),
   {
