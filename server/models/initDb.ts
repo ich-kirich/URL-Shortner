@@ -5,7 +5,6 @@ import Statistic from "./statistic";
 const initDb = async () => {
   Statistic.belongsTo(Link);
   Link.hasMany(Statistic, { as: "statistics" });
-
   await sequelize.authenticate();
   return;
 };

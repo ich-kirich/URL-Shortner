@@ -1,9 +1,0 @@
-{
-  "development": {
-    "username": "postgres",
-    "password": "rootkm",
-    "database": "url_shortner",
-    "host": "localhost",
-    "dialect": "postgres"
-  }
-}

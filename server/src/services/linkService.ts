@@ -53,7 +53,7 @@ export async function createUrl(
   const code = await createShortCode();
   const link = await Link.create({
     originalUrl,
-    shortUrl: `${config.get("BASE_URL")}/${code}`,
+    shortUrl: `${config.get("base_url")}/${code}`,
     shortCode: code,
   });
   await link.save();
