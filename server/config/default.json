@@ -1,0 +1,9 @@
+{
+  "username": "postgres",
+  "database": "url_shortner",
+  "host": "localhost",
+  "port": "5432",
+  "dialect": "postgres",
+  "base_url": "http://localhost:5000",
+  "server_port": "5000"
+}

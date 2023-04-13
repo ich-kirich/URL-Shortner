@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  url_backend_db:
+    container_name: url_backend_db
+    image: "postgres:12"
+    ports:
+      - "5432:5432"
+    environment:
+      - DB_USER=
+      - DB_PASSWORD=
+      - DB_NAME=
+    volumes:
+      - url_backend_data:/var/lib/postgresql/data
+volumes:
+  url_backend_data: {}
